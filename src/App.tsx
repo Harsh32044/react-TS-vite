@@ -11,20 +11,24 @@ const App: React.FC = () => {
   //Array of TODOs
 
   const [todoArr, setTodoArr] = useState<Todo[]>([])
-
+  
   function handleAdd(e: React.FormEvent) {
     e.preventDefault()
-    // console.log("GO")
+    console.log(todoArr);
     if (todo) {
       setTodoArr([...todoArr, {id: nanoid(), todo, isDone: false}])
       setTodo("")
     }
+    
   }
   
   return (
     <div className="App">
       <span className="heading">TASKIFY</span>
       <InputField todo={todo} setTodo ={setTodo} handleAdd={handleAdd}/>
+      {todoArr.map(todoItem => {
+        return <li key={nanoid()}>{todoItem.todo}</li>
+      })}
     </div>
   )
 }
