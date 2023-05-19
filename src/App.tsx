@@ -3,11 +3,12 @@ import './App.css'
 import InputField from "./components/InputField";
 import { Todo } from "./model";
 import { nanoid } from "nanoid";
+import TodoList from "./components/TodoList";
 
 
 const App: React.FC = () => {
 
-  const [todo, setTodo] = React.useState<string>("")
+  const [todo, setTodo] = React.useState("")
   //Array of TODOs
 
   const [todoArr, setTodoArr] = useState<Todo[]>([])
@@ -26,9 +27,7 @@ const App: React.FC = () => {
     <div className="App">
       <span className="heading">TASKIFY</span>
       <InputField todo={todo} setTodo ={setTodo} handleAdd={handleAdd}/>
-      {todoArr.map(todoItem => {
-        return <li key={nanoid()}>{todoItem.todo}</li>
-      })}
+      <TodoList todoArr={todoArr} setTodoArr={setTodoArr}/>
     </div>
   )
 }

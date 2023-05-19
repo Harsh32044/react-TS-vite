@@ -1,6 +1,10 @@
+:root {
+    --width: 90%
+}
+
 .input {
     display: flex;
-    width: 90%;
+    width: var(--width);
     position: relative; 
     /* Since button has to be placed inside the input, and given absolute positioning, hence the parent will be relative positioned */
     align-items: center;
@@ -44,4 +48,23 @@
 .input__submit:active {
     transform: scale(0.8);
     box-shadow: 0 0 5px black;
+}
+
+.todos {
+    width: var(--width);
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.todoItem {
+    height: 2rem;
+    padding: 3% 3%;
+    font-size: 2rem;
+    text-align: left;
+    background-color: #E57C23;
+    color: white;
+    border-radius: 10px;
 }
