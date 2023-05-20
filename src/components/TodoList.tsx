@@ -10,10 +10,7 @@ interface Props {
 }
 
 const TodoList:React.FC<Props> = ({todoArr, setTodoArr}: Props) => {
-  
-  const todoList = todoArr.map(item => {
-    return <div key={nanoid()} className="todoItem">{item.todo}</div>
-  })
+
     return (
     <div className="todos">
       {todoArr.map(todo => {
