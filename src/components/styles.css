@@ -53,18 +53,28 @@
 .todos {
     width: var(--width);
     margin: 2rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.todoItem {
-    height: 2rem;
-    padding: 3% 3%;
+.todos_single {
     font-size: 2rem;
-    text-align: left;
-    background-color: #E57C23;
-    color: white;
-    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    background-color: antiquewhite;
+    background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+}
+
+.todos_single_text:focus {
+    outline: none;
+}
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
 }

@@ -2,6 +2,7 @@ import React from "react"
 import { Todo } from "../model"
 import { nanoid } from "nanoid";
 import './styles.css'
+import SingleTodoComponent from "./SingleTodoComponent";
 
 interface Props {
     todoArr: Todo[];
@@ -15,7 +16,14 @@ const TodoList:React.FC<Props> = ({todoArr, setTodoArr}: Props) => {
   })
     return (
     <div className="todos">
-        {todoList}
+      {todoArr.map(todo => {
+        return <SingleTodoComponent 
+                  todo={todo}
+                  key={nanoid()}
+                  todoArr={todoArr}
+                  setTodoArr={setTodoArr}
+                  />
+      })}
     </div>
   )
 }
