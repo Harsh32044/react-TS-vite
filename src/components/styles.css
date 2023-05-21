@@ -145,3 +145,9 @@
     color: white;
     background-size: 200%;
 }
+
+.done {
+    color:#4E6E81;
+    background-color: #16FF00;
+    background-image: none;
+}

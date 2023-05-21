@@ -72,7 +72,7 @@ const App: React.FC = () => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
     <div className="App">
-      <span className="heading">TASKIFY</span>
+      <span className="heading">TASKIFY - The Todo App you need</span>
       <InputField todo={todo} setTodo ={setTodo} handleAdd={handleAdd}/>
       <TodoList todoArr={todoArr} setTodoArr={setTodoArr} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos}/>
     </div>
