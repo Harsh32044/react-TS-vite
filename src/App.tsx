@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css'
 import InputField from "./components/InputField";
-import { Actions, Todo } from "./model";
+import { Todo } from "./model";
 import { nanoid } from "nanoid";
 import TodoList from "./components/TodoList";
 import { DragDropContext, DropResult } from '@hello-pangea/dnd'
@@ -46,9 +46,9 @@ const App: React.FC = () => {
 
     if(destination.droppableId === source.droppableId && destination.index === source.index) return
 
-    let add, 
-    activeTodos = todoArr,
-    complete = completedTodos
+    let add
+    const activeTodos = todoArr
+    const complete = completedTodos
 
     if(source.droppableId === 'TodosList') {
       add = activeTodos[source.index]
