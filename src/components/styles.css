@@ -113,7 +113,7 @@
         margin-bottom: 0.9rem;
     }
     .container {
-        width: var(--width);
+        width: 90%;
         flex-direction: column;
     }
 }
@@ -148,6 +148,7 @@
 
 .done {
     color:#4E6E81;
-    background-color: #16FF00;
+    background-color: #9DB2BF;
     background-image: none;
+    text-decoration: line-through;
 }

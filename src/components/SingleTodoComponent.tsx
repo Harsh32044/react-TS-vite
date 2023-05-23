@@ -11,9 +11,10 @@ interface Props {
     setTodoArr: React.Dispatch<React.SetStateAction<Todo[]>>;
     // dispatch: React.Dispatch<Actions>
     index: number;
+    setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr }) => {
+const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr, setCompletedTodos }) => {
 
     const [edit, setEdit] = React.useState(false)
     const [editTodo, setEditTodo] = React.useState(todo.todo)
@@ -25,6 +26,14 @@ const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr
 
     function handleDone(id: string) {
         setTodoArr(todoArr.map(oldTodoItem => {
+            return oldTodoItem.id === id ? {
+                ...oldTodoItem,
+                isDone: !oldTodoItem.isDone
+            }
+                : oldTodoItem
+        }))
+
+        setCompletedTodos(todoArr.map(oldTodoItem => {
             return oldTodoItem.id === id ? {
                 ...oldTodoItem,
                 isDone: !oldTodoItem.isDone

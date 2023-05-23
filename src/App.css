@@ -3,16 +3,15 @@
 
 :root {
     margin: 0;
+    background-color: #191825;
 }
 
 .App {
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    height: 98vh;
     display: flex;
-    margin: 0;
     flex-direction: column;
     align-items: center;
-    background-color: #191825;
     font-family: 'Neucha', cursive;
 }
 
