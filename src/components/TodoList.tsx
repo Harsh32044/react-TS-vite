@@ -25,7 +25,7 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
             {...provided.droppableProps}>
               <span className="todos_heading">Active Tasks</span>
               {todoArr.map((todo, index) => {
-                return !todo.isDone && <SingleTodoComponent
+                return  <SingleTodoComponent
                   index={index}
                   todo={todo}
                   key={nanoid()}
@@ -45,7 +45,7 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
             <div className="todos remove" ref={provided.innerRef} {...provided.droppableProps}>
               <span className={`todos_heading ${snapshot.isDraggingOver ? 'dragremove' : ''}`}>Completed Tasks</span>
               {completedTodos.map((todo,index) => {
-                return todo.isDone && <SingleTodoComponent
+                return  <SingleTodoComponent
                   index={index}
                   todo={todo}
                   key={nanoid()}
