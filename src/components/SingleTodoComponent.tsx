@@ -12,9 +12,10 @@ interface Props {
     // dispatch: React.Dispatch<Actions>
     index: number;
     setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+    handleDone(id: string): void
 }
 
-const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr, setCompletedTodos }) => {
+const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr, setCompletedTodos, handleDone }) => {
 
     const [edit, setEdit] = React.useState(false)
     const [editTodo, setEditTodo] = React.useState(todo.todo)
@@ -23,24 +24,6 @@ const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr
     React.useEffect(() => {
         inputRef.current?.focus()
     }, [edit])
-
-    function handleDone(id: string) {
-        setTodoArr(todoArr.map(oldTodoItem => {
-            return oldTodoItem.id === id ? {
-                ...oldTodoItem,
-                isDone: !oldTodoItem.isDone
-            }
-                : oldTodoItem
-        }))
-
-        setCompletedTodos(todoArr.map(oldTodoItem => {
-            return oldTodoItem.id === id ? {
-                ...oldTodoItem,
-                isDone: !oldTodoItem.isDone
-            }
-                : oldTodoItem
-        }))
-    }
 
     const handleDelete = (id: string) => {
         setTodoArr(todoArr.filter(todoItem =>
