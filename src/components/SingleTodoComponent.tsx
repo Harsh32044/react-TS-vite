@@ -12,10 +12,9 @@ interface Props {
     // dispatch: React.Dispatch<Actions>
     index: number;
     setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
-    completedTodos: Todo[]
 }
 
-const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr, setCompletedTodos, completedTodos }) => {
+const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr, setCompletedTodos }) => {
 
     const [edit, setEdit] = React.useState(false)
     const [editTodo, setEditTodo] = React.useState(todo.todo)
@@ -27,23 +26,20 @@ const SingleTodoComponent: React.FC<Props> = ({ index, todo, todoArr, setTodoArr
 
     function handleDone(id: string) {
         setTodoArr(todoArr.map(oldTodoItem => {
-            console.log("Input parameter: " + id + " todoItem.id: " + oldTodoItem.id + " isDoneCurrent: "+ oldTodoItem.isDone)
-            let newItem:Todo
-            if (oldTodoItem.id === id) {
-                newItem = {
-                    id: oldTodoItem.id,
-                    todo: oldTodoItem.todo,
-                    isDone: !oldTodoItem.isDone
-                }
+            return oldTodoItem.id === id ? {
+                ...oldTodoItem,
+                isDone: !oldTodoItem.isDone
             }
-            else {
-                newItem = oldTodoItem
-            }
-            console.log(newItem)
-            return newItem
+                : oldTodoItem
         }))
 
-        console.log(todoArr);
+        setCompletedTodos(todoArr.map(oldTodoItem => {
+            return oldTodoItem.id === id ? {
+                ...oldTodoItem,
+                isDone: !oldTodoItem.isDone
+            }
+                : oldTodoItem
+        }))
     }
 
     const handleDelete = (id: string) => {
