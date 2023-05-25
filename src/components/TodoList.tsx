@@ -9,13 +9,13 @@ interface Props {
   todoArr: Todo[];
   setTodoArr: React.Dispatch<React.SetStateAction<Todo[]>>;
   completedTodos: Todo[]
-  setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  // setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
   handleDone (id: string): void
 
   // dispatch: React.Dispatch<Actions>
 }
 
-const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCompletedTodos, handleDone }) => {
+const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, handleDone }) => {
 
   return (
     <div className="container">
@@ -32,7 +32,6 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
                   key={nanoid()}
                   todoArr={todoArr}
                   setTodoArr={setTodoArr}
-                  setCompletedTodos = {setCompletedTodos}
                   handleDone={handleDone}
                 />)
                 : (
@@ -42,7 +41,6 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
                   key={nanoid()}
                   todoArr={todoArr}
                   setTodoArr={setTodoArr}
-                  setCompletedTodos = {setCompletedTodos}
                   handleDone={handleDone}
                 />
                 )
@@ -64,7 +62,6 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
                   key={nanoid()}
                   todoArr={completedTodos}
                   setTodoArr={setTodoArr}
-                  setCompletedTodos = {setCompletedTodos}
                   handleDone={handleDone}
                 />)
                 : (
@@ -74,7 +71,6 @@ const TodoList: React.FC<Props> = ({ todoArr, setTodoArr, completedTodos, setCom
                   key={nanoid()}
                   todoArr={completedTodos}
                   setTodoArr={setTodoArr}
-                  setCompletedTodos = {setCompletedTodos}
                   handleDone={handleDone}
                 />
                 )
