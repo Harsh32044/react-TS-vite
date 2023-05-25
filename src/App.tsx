@@ -37,6 +37,20 @@ const App: React.FC = () => {
     }
     
   }
+
+  function handleDone(id: string) {
+    
+    const newTD: Todo[] = todoArr.map(oldTodoItem => {
+      return oldTodoItem.id === id ? {
+          ...oldTodoItem,
+          isDone: !oldTodoItem.isDone
+      }
+          : oldTodoItem
+  })
+
+    setCompletedTodos(newTD)
+    setTodoArr(newTD)
+}
   
   const handleDragEnd = (result: DropResult) => {
     const {source, destination} = result
@@ -58,9 +72,11 @@ const App: React.FC = () => {
     }
 
     if (destination.droppableId === 'TodosList') {
+      add.isDone = false
       activeTodos.splice(destination.index, 0, add)
     }
     else {
+      add.isDone = true
       completedTodos.splice(destination.index, 0, add)
 
     }
@@ -74,7 +90,7 @@ const App: React.FC = () => {
     <div className="App">
       <span className="heading">TASKIFY - The Todo App you need</span>
       <InputField todo={todo} setTodo ={setTodo} handleAdd={handleAdd}/>
-      <TodoList todoArr={todoArr} setTodoArr={setTodoArr} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos}/>
+      <TodoList todoArr={todoArr} setTodoArr={setTodoArr} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos} handleDone={(handleDone)}/>
     </div>
     </DragDropContext>
   )
