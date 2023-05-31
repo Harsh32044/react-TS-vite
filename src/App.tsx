@@ -23,11 +23,20 @@ const App: React.FC = () => {
 
   const [todo, setTodo] = React.useState("")
   //Array of TODOs
-  const [todoArr, setTodoArr] = React.useState<Todo[]>([])
+  const [todoArr, setTodoArr] = React.useState<Todo[]>(JSON.parse(localStorage.getItem("todoArray")) || [])
 
   // const [todos, dispatch] = React.useReducer(TodoReducer, [])
 
+  React.useEffect(() => {
+    localStorage.setItem("todoArray", JSON.stringify(todoArr))
+  }, [todoArr])
+
   const [completedTodos, setCompletedTodos] = React.useState<Todo[]>([])
+
+  React.useEffect(() => {
+    const compTD: Todo[] = todoArr.filter(item => item.isDone)
+    setCompletedTodos(compTD)
+  }, [])
   
   function handleAdd(e: React.FormEvent) {
     e.preventDefault()
